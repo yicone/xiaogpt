@@ -167,7 +167,11 @@ class MiGPT:
         return ""
 
     async def get_if_xiaoai_is_playing(self):
-        playing_info = await self.mina_service.player_get_status(self.device_id)
+        is_playing = False
+        try:
+            playing_info = await self.mina_service.player_get_status(self.device_id)
+        except Exception as err:
+            print(err)
         # WTF xiaomi api
         is_playing = (
             json.loads(playing_info.get("data", {}).get("info", "{}")).get("status", -1)
