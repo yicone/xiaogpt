@@ -153,7 +153,7 @@ class MiGPT:
 
     async def ask_gpt(self, query):
         # TODO maybe use v2 to async it here
-        if self.conversation_id:
+        if not self.conversation_id:
             data = list(self.chatbot.ask(query))[-1]
         else:
             data = list(self.chatbot.ask(query, conversation_id=self.conversation_id))[
