@@ -162,7 +162,6 @@ class MiGPT:
         if message := data.get("message", ""):
             # xiaoai tts did not support space
             message = self._normalize(message)
-            message = "以下是GPT的回答:" + message
             return message
         return ""
 
@@ -230,7 +229,7 @@ class MiGPT:
                             print("小爱没回")
                         message = await self.ask_gpt(query)
                         # tts to xiaoai with ChatGPT answer
-                        print(message)
+                        print("以下是GPT的回答: ", message)
                         await self.do_tts(message)
                         if self.mute_xiaoai:
                             while 1:
