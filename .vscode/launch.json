@@ -1,0 +1,17 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "args": ["--hardware", "LX04", "--use_command", "--mute_xiaoai", "--conversation_id=509eb558-d895-440b-96ef-8cc6aba10fde"],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }
+    ]
+}
