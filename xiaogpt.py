@@ -205,14 +205,16 @@ class MiGPT:
                 if new_timestamp > self.last_timestamp:
                     self.last_timestamp = new_timestamp
                     query = last_record.get("query", "")
-                    if query.find("帮我回答") != -1:
+                    wake_word = "请问"
+                    if query.find(wake_word) != -1:
                         self.this_mute_xiaoai = False
                         # drop 帮我回答
-                        query = query[4:] + "，请用100字以内回答"
+                        query = query[len(wake_word):]
                         # waiting for xiaoai speaker done
                         if not self.mute_xiaoai:
                             await asyncio.sleep(8)
-                        await self.do_tts("正在问GPT有点慢请耐心等待")
+                        loading_word = "别听小爱瞎说，上酸菜"
+                        await self.do_tts(loading_word)
                         try:
                             print(
                                 "以下是小爱的回答: ",
